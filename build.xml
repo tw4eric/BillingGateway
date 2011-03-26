@@ -1,54 +1,19 @@
 <?xml version="1.0"?>
 <project name="BillingGateway" basedir="." default="test">
+
+	<property name="cobertura.dir" value="/home/mujir/tools/cobertura-1.9.4.1" />
+	<property name="instrumented.dir" value="tempForCoberturaInstrumentation" />
+		
 	<property name="src" value="src"/>
 	<property name="test" value="test"/>
 	<property name="output" value="bin"/>
 	<property name="lib" value="lib"/>
-	<property name="test.reports" value="reports"/>
-	
-	<target name="clean">
-		<delete dir="${output}" />
-		<delete dir="${test.reports}" />
-		<delete file="CommonFormat.txt" />
-			
-		<mkdir dir="${output}"/>
-		<mkdir dir="${test.reports}"/>
-	</target>
+		
+	<property name="reports" value="reports"/>
+	<property name="test.reports" value="${reports}/tests"/>
+	<property name="coveragereport.dir" value="${reports}/coverage"/>
 
-	<target name="compile" depends="clean" description="Compiles the BillingGateway">
-    	<javac srcdir="${src}" destdir="${output}" >
-    		<classpath refid="billinggateway.classpath"/>    		
-    	</javac>
-		<javac srcdir="${test}" destdir="${output}">
-			<classpath refid="billinggateway.classpath"/>
-		</javac>
-    </target>
-	
-	
-    <target name="test" depends="compile" description="Compiles and runs the JUnit tests">
-    	<junit fork="yes" haltonfailure="no" printsummary="yes">
-    	    <formatter type="xml" />
-    	    <classpath refid="test.classpath" />
-		    <batchtest todir="${test.reports}">
-		    	<fileset dir="${output}" includes="**/*Test.class" />
-		    </batchtest>
-    	  </junit>
-    	
-    	<junitreport todir="${test.reports}">
-    		<fileset dir="${test.reports}">
-    			<include name="TEST-*.xml"/>
-    		</fileset>
-    		<report todir="${test.reports}"/>
-    	</junitreport>
-    </target>
-
-    <target name="aTest" depends="compile" description="Compiles and runs the JUnit tests">
-    	<junit fork="yes" haltonfailure="no" printsummary="yes">
-    	    <test name="com.training.DummyTest" /> <!-- you can change the test name here -->
-    	    <formatter type="plain" usefile="false" />
-    	    <classpath refid="test.classpath" />
-    	  </junit>
-    </target>
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
 	<path id="billinggateway.classpath">
     	<fileset dir="${lib}">
@@ -63,4 +28,75 @@
     	</fileset>			
 	</path>
 
+	<path id="cobertura.classpath">
+	    <fileset dir="${cobertura.dir}">
+	        <include name="cobertura.jar" />
+	        <include name="lib/**/*.jar" />
+	    </fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${output}" />
+		<delete dir="${reports}" />
+		<delete dir="${instrumented.dir}"/>
+		<delete file="CommonFormat.txt" />
+			
+		<mkdir dir="${output}"/>
+		<mkdir dir="${test.reports}"/>
+	</target>
+
+	<target name="compile" depends="clean" description="Compiles the BillingGateway">
+    	<javac srcdir="${src}" destdir="${output}" debug="true">
+    		<classpath refid="billinggateway.classpath"/>    		
+    	</javac>
+		<javac srcdir="${test}" destdir="${output}" debug="true">
+			<classpath refid="billinggateway.classpath"/>
+		</javac>
+    </target>
+	
+	<target name="setupCobertura">
+		<delete file="cobertura.ser" />
+
+		<cobertura-instrument todir="${instrumented.dir}">
+			<fileset dir="${output}">
+				<include name="**/*.class" />
+				<exclude name="**/*Test.class" />
+			</fileset>
+		</cobertura-instrument>
+
+	</target>
+	
+    <target name="test" depends="compile, setupCobertura" description="Compiles and runs the JUnit tests">
+    	<junit fork="yes" haltonfailure="no" printsummary="yes">
+    		<sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
+    		
+    	    <formatter type="xml" />
+    		
+    		<classpath location="${instrumented.dir}" />
+    	    <classpath refid="test.classpath" />
+    	    	
+		    <batchtest todir="${test.reports}">
+		    	<fileset dir="${output}" includes="**/*Test.class" />
+		    </batchtest>
+    	  </junit>
+    	
+    	<junitreport todir="${test.reports}">
+    		<fileset dir="${test.reports}">
+    			<include name="TEST-*.xml"/>
+    		</fileset>
+    		<report todir="${test.reports}"/>
+    	</junitreport>
+    	
+    	<cobertura-report format="html" destdir="${coveragereport.dir}" srcdir="${src}" />
+
+    </target>
+
+    <target name="aTest" depends="compile" description="Compiles and runs the JUnit tests">
+    	<junit fork="yes" haltonfailure="no" printsummary="yes">
+    	    <test name="com.training.DummyTest" /> <!-- you can change the test name here -->
+    	    <formatter type="plain" usefile="false" />
+    	    <classpath refid="test.classpath" />
+    	  </junit>
+    </target>
+	
 </project>

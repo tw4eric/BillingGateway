@@ -1,2 +1,4 @@
 bin/
 reports/
+tempForCoberturaInstrumentation/
+cobertura.ser
