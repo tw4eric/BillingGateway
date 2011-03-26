@@ -87,7 +87,7 @@
     		<report todir="${test.reports}"/>
     	</junitreport>
     	
-    	<cobertura-report format="html" destdir="${coveragereport.dir}" srcdir="${src}" />
+    	<cobertura-report format="xml" destdir="${coveragereport.dir}" srcdir="${src}" />
 
     </target>
 
