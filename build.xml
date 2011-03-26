@@ -66,7 +66,26 @@
 
 	</target>
 	
-    <target name="test" depends="compile, setupCobertura" description="Compiles and runs the JUnit tests">
+    <target name="test" depends="compile" description="Compiles and runs the JUnit tests">
+    	<junit fork="yes" haltonfailure="no" printsummary="yes">
+    	    <formatter type="xml" />
+    		
+    	    <classpath refid="test.classpath" />
+    	    	
+		    <batchtest todir="${test.reports}">
+		    	<fileset dir="${output}" includes="**/*Test.class" />
+		    </batchtest>
+    	  </junit>
+    	
+    	<junitreport todir="${test.reports}">
+    		<fileset dir="${test.reports}">
+    			<include name="TEST-*.xml"/>
+    		</fileset>
+    		<report todir="${test.reports}"/>
+    	</junitreport>
+    </target>
+	
+    <target name="coverage" depends="compile, setupCobertura" description="description">
     	<junit fork="yes" haltonfailure="no" printsummary="yes">
     		<sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
     		
@@ -87,8 +106,7 @@
     		<report todir="${test.reports}"/>
     	</junitreport>
     	
-    	<cobertura-report format="xml" destdir="${coveragereport.dir}" srcdir="${src}" />
-
+    	<cobertura-report format="xml" destdir="${coveragereport.dir}" srcdir="${src}" />        
     </target>
 
     <target name="aTest" depends="compile" description="Compiles and runs the JUnit tests">
