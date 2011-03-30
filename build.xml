@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <project name="BillingGateway" basedir="." default="test">
 
-	<property name="cobertura.dir" value="/home/mujir/tools/cobertura-1.9.4.1" />
+	<property name="cobertura.dir" value="lib" />
 	<property name="instrumented.dir" value="tempForCoberturaInstrumentation" />
-		
 	<property name="src" value="src"/>
 	<property name="test" value="test"/>
 	<property name="output" value="bin"/>
