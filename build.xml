@@ -12,6 +12,12 @@
 	<property name="test.reports" value="${reports}/tests"/>
 	<property name="coveragereport.dir" value="${reports}/coverage"/>
 
+	<path id="cobertura.classpath">
+	    <fileset dir="${cobertura.dir}">
+	        <include name="cobertura.jar" />
+	        <include name="lib/**/*.jar" />
+	    </fileset>
+	</path>
 	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
 	<path id="billinggateway.classpath">
@@ -27,12 +33,6 @@
     	</fileset>			
 	</path>
 
-	<path id="cobertura.classpath">
-	    <fileset dir="${cobertura.dir}">
-	        <include name="cobertura.jar" />
-	        <include name="lib/**/*.jar" />
-	    </fileset>
-	</path>
 
 	<target name="clean">
 		<delete dir="${output}" />
