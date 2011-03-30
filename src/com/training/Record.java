@@ -3,9 +3,19 @@ package com.training;
 import java.util.Date;
 
 public class Record {
-	String source;
-	String custID;
-	int  callDuration;
-	Date calldate;
-	double cost;
+	private String source;
+	private String custID;
+	private int  callDuration;
+	private Date calldate;
+	private double cost;
+
+	public int getCallDuration() {
+		return callDuration;
+	}
+	public Date getCalldate() {
+		return calldate;
+	}
+	public double getCost() {
+		return cost;
+	}
 }
