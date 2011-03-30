@@ -13,4 +13,10 @@ public abstract class TelecomOperator {
 		else
 			myDailyInfo.put(aRecord.getCalldate(), new DailyInfo(aRecord.getCallDuration(), aRecord.getCost()));
 	}
+	
+	public String printRecordWithin(Date fromDate, Date toDate){
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
+	}
 }

@@ -9,5 +9,5 @@ public class OperatorAirtel extends TelecomOperator{
 		this.operator = Operator.AIRTEL;
 		myDailyInfo = new HashMap<Date, DailyInfo>();
 	}
-
+	
 }
