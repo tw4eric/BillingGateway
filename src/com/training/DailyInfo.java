@@ -6,14 +6,14 @@ public class DailyInfo {
 	double revenue;
 	
 	
-	public DailyInfo(int callDuation, double revenue) {
-		this.callDuration = callDuation;
-		this.revenue = revenue;
+	public DailyInfo(int callDuration, double cost) {
+		this.callDuration = callDuration;
+		this.revenue = callDuration * cost;
 	}
 	
-	public void update(int aCallDuation, double aRevenue){
+	public void update(int aCallDuation, double cost){
 		callDuration += aCallDuation;
-		revenue += aRevenue;
+		revenue += aCallDuation * cost;
 	}
 
 }
