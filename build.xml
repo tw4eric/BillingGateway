@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="BillingGateway" basedir="." default="test">
 
-	<property name="cobertura.dir" value="/home/mujir/tools/cobertura-1.9.4.1" />
+	<property name="cobertura.dir" value="lib" />
 	<property name="instrumented.dir" value="tempForCoberturaInstrumentation" />
 		
 	<property name="src" value="src"/>
@@ -13,6 +13,12 @@
 	<property name="test.reports" value="${reports}/tests"/>
 	<property name="coveragereport.dir" value="${reports}/coverage"/>
 
+	<path id="cobertura.classpath">
+	    <fileset dir="${cobertura.dir}">
+	        <include name="cobertura.jar" />
+	        <include name="lib/**/*.jar" />
+	    </fileset>
+	</path>
 	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
 	<path id="billinggateway.classpath">
@@ -28,12 +34,6 @@
     	</fileset>			
 	</path>
 
-	<path id="cobertura.classpath">
-	    <fileset dir="${cobertura.dir}">
-	        <include name="cobertura.jar" />
-	        <include name="lib/**/*.jar" />
-	    </fileset>
-	</path>
 
 	<target name="clean">
 		<delete dir="${output}" />
