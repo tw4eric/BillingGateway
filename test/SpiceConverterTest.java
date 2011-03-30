@@ -48,6 +48,4 @@ public class SpiceConverterTest
 		assertEquals(60.0, s.getCallRate(), .001);
 	}
 	
-	
-	
 }
