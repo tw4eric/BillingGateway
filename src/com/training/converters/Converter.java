@@ -1,4 +1,4 @@
-package com.training;
+package com.training.converters;
 
 import java.io.*;
 
@@ -14,20 +14,7 @@ import java.io.*;
 // first step is to use a factory to return AirtelConverter or VodafoneConverter. move funct. to AirtelConverter
 // second step is to have mock tests and introduce abstract for file operation
 
-// PAIR 2 (write a new file parser to convert) -> Vodafone format - source customerId date time callduration(mins) 
-//  vodafone 123 23/7/2011 11:30  30 
-// fixed price of 50 paise per min
-// VodafoneConverter (takes a string). You can ask it to return data in the common record.
 
-// PAIR 3 (write a new file parser to convert) -> Spice format - source,customerId,date,time,callduration(mins),homecity,citycallwasmadein,homerate (paise),visitorRate(paise) 
-//  spice,123,23/7/2011,11:30,30,1,Mumbai,Mumbai,.5,2 
-// SpiceConverter (takes a string). You can ask it to return data in the common record.
-
-// PAIR 4 -> Reports. Create API that returns monthly revenue for a operator
-// Have a OperatorReport class that has a method revenue(). It reads from file (in common format) and returns the total revenue.
-
-// PAIR 5 -> Customer monthly bill. Create an api that returns total billamount for a customer.
-// Have a CustomerBill class that has a method revenue(customerId). It reads from file (in common format) and returns the total bill.
 
 // PAIR 6 -> 
 public class Converter {

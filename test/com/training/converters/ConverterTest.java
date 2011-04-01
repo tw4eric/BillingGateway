@@ -1,7 +1,9 @@
-package com.training;
+package com.training.converters;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.training.converters.Converter;
 
 import java.io.IOException;
 
