@@ -6,4 +6,10 @@ package com.training.billing;
 
 public class CustomerBill {
 
+	public CustomerBill(int CustomerId, String FilePath) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
 }
