@@ -14,8 +14,9 @@ public class CustomerBillTest {
 	@Test
 	public void ReturnCustomerBillWhenCustomerIdIs1256AndBillingCostis25() {
 		CommonFormatService	mockCommonFormatService = Mockito.mock(CommonFormatService.class);
-		CustomerBill customerBill = new CustomerBill(1256,"CommonFormat.txt");
+		CustomerBill customerBill = new CustomerBill(1256,"CommonFormat.txt", mockCommonFormatService);
 		
+		customerBill.doesFileExist();
 		Mockito.verify(mockCommonFormatService).doesFileExist();	
 	}
 }
