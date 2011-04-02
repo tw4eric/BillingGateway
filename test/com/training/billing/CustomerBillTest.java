@@ -29,4 +29,6 @@ public class CustomerBillTest {
 		Mockito.stub(mockCommonFormatService.ReturnFile()).toReturn("AIRTEL,1256,23/7/2011,11:30,25");
 		Assert.assertEquals(25.0, customerBill.CalculateBill());
 	}
+	
+	
 }

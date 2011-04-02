@@ -21,7 +21,6 @@ public class CustomerBill {
 		{
 			FileReadString = myMockCommonFormatService.ReturnFile();
 			String wordString[] = FileReadString.split(",");
-			System.out.println(wordString[1]);
 			if(myCustomerId.equals(wordString[1]))
 			{
 				return Double.parseDouble(wordString[4]);
