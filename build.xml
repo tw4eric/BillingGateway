@@ -66,7 +66,7 @@
 	</target>
 	
     <target name="test" depends="compile" description="Compiles and runs the JUnit tests">
-    	<junit fork="yes" haltonfailure="no" printsummary="yes">
+    	<junit fork="yes" haltonfailure="yes" printsummary="yes">
     	    <formatter type="xml" />
     		
     	    <classpath refid="test.classpath" />
