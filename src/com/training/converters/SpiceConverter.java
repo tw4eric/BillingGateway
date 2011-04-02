@@ -1,11 +1,17 @@
 package com.training.converters;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 //PAIR 3 (write a new file parser to convert) -> Spice format - source,customerId,date,time,callduration(mins),homecity,citycallwasmadein,homerate (paise),visitorRate(paise) 
 //spice,123,23/7/2011,11:30,30,1,Mumbai,Mumbai,.5,2 
 //SpiceConverter (takes a string). You can ask it to return data in the common record.
 
 public class SpiceConverter {
-
+	
 	public boolean isSpiceRecord(String aRecord)
 	{
 		String[] words = aRecord.split("\\s+");	
@@ -27,4 +33,21 @@ public class SpiceConverter {
 				
 		return "SPICE" + "," + words[1] + "," + words[2] + "," + words[3] + "," + callCost;
 	}
+	
+	public void writeRecordToFile(String aRecord)  throws IOException
+	{
+		String fileName = "./SpiceOutput.txt";
+		BufferedWriter fileWriter = null;
+		try {           
+            fileWriter = new BufferedWriter(new FileWriter(fileName));
+            fileWriter.write(convert(aRecord));
+		}		
+		finally {
+        	
+            if (fileWriter != null)
+                fileWriter.close();
+                  
+		}
+	}
 }
+
