@@ -26,7 +26,7 @@ public class VodafoneConverterTest {
 	}
 	
 	@Test
-	public void isInvalidArgumentPassed() throws Exception {
+	public void throwsExceptionForInvalidArgument() throws Exception {
 		
 		String vodafoneInput [] = {"Airtel","123","23/7/2011","11:30","20","true","1","2"};
 		VodafoneConverter vodafoneConverter = new VodafoneConverter();
@@ -38,5 +38,17 @@ public class VodafoneConverterTest {
 			
 		}
 	}
-
+	@Test
+	public void throwsExceptionForInvalidNumberOfArgument() throws Exception {
+		
+		String vodafoneInput [] = {"Vodafone","123","23/7/2011","11:30","2"};
+		VodafoneConverter vodafoneConverter = new VodafoneConverter();
+		try{
+			String outputPath = "abc";
+			vodafoneConverter.convertRecord(vodafoneInput,outputPath );
+			Assert.fail();
+		}catch (IllegalArgumentException illegalArgumentException){
+			
+		}
+	}
 }

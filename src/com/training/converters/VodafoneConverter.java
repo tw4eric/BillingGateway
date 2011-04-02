@@ -21,8 +21,11 @@ public class VodafoneConverter {
 		if(!vodafoneInput[0].equals("Vodafone")){
 			throw new IllegalArgumentException("Invalid record passed.");
 		}
-		
-		
+		if(vodafoneInput.length != 8){
+			throw new IllegalArgumentException("Invalid no of fields in record.");
+		}
+			
+		calculateCallCost(vodafoneInput);
 	}
 
 }
