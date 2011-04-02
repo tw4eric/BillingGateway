@@ -1,5 +1,6 @@
 package com.training.converters;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 //Common format - source,customerId,date,time,billingCost(Rs)
@@ -10,8 +11,10 @@ import org.junit.Test;
 
 public class SpiceConverterTest {
 	@Test
-	public void dummyTest() {
-		
+	public void IfSpiceObjectIsNotNull() {
+	
+       SpiceConverter	aSpiceConverter = new SpiceConverter();
+       Assert.assertNotNull(aSpiceConverter);
+	 
 	}
-
 }

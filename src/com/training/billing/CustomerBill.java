@@ -6,4 +6,17 @@ package com.training.billing;
 
 public class CustomerBill {
 
+	CommonFormatService myMockCommonFormatService ; 
+	public CustomerBill(int CustomerId, String FilePath, CommonFormatService mockCommonFormatService) {
+		// TODO Auto-generated constructor stub
+		myMockCommonFormatService = mockCommonFormatService ; 
+	}
+	
+	public Boolean doesFileExist()
+	{
+		return myMockCommonFormatService.doesFileExist();
+	}
+	
+	
+
 }
