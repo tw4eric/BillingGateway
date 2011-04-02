@@ -1,4 +1,4 @@
 bin/
-reports/
+reports/tests/
 tempForCoberturaInstrumentation/
 cobertura.ser
