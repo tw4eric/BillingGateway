@@ -7,4 +7,22 @@ package com.training.converters;
 
 public class VodafoneConverter {
 
+	public double calculateCallCost(String[] vodafoneInput) {
+	if (Boolean.parseBoolean(vodafoneInput[5]) == true) {
+			return Double.parseDouble(vodafoneInput[4])
+					* Double.parseDouble(vodafoneInput[6]);
+		} else {
+			return Double.parseDouble(vodafoneInput[4])
+					* Double.parseDouble(vodafoneInput[7]);
+		}
+	}
+
+	public void convertRecord(String[] vodafoneInput, String outputPath) {
+		if(!vodafoneInput[0].equals("Vodafone")){
+			throw new IllegalArgumentException("Invalid record passed.");
+		}
+		
+		
+	}
+
 }

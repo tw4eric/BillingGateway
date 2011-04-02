@@ -8,7 +8,6 @@ import java.io.*;
 // AIRTEL,123,23/7/2011,11:30,15
 // VODAFONE,123,23/7/2011,11:30,15
 // SPICE,123,23/7/2011,11:30,15
-
 // PAIR 1 (refactor) -> Airtel format - source customerId date time callduration(secs) isHomeLocation homeRate(Rs) visitorRate(Rs)
 //  airtel  123 23/7/2011 11:30 30 true .5 2
 // first step is to use a factory to return AirtelConverter or VodafoneConverter. move funct. to AirtelConverter
