@@ -6,4 +6,13 @@ package com.training.converters;
 
 public class SpiceConverter {
 
+	public boolean isSpiceRecord(String aRecord)
+	{
+		String[] words = aRecord.split("\\s+");
+		System.out.println(words[0]);
+		if(words[0].equals("SPICE"))			
+			return true;
+		
+		return false;
+	}
 }
