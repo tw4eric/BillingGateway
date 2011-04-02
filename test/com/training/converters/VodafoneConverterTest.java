@@ -19,6 +19,13 @@ public class VodafoneConverterTest {
 	}
 	
 	@Test
+	public void isCallCost40_If_RemoteRateIs1_And_DurationIs20() {
+		String vodafoneInput [] = {"Vodafone","123","23/7/2011","11:30","20","false","1","2"};
+		VodafoneConverter vodafoneConverter = new VodafoneConverter();
+		Assert.assertEquals(40.0,vodafoneConverter.calculateCallCost(vodafoneInput));
+	}
+	
+	@Test
 	public void isInvalidArgumentPassed() throws Exception {
 		
 		String vodafoneInput [] = {"Airtel","123","23/7/2011","11:30","20","true","1","2"};
@@ -31,4 +38,5 @@ public class VodafoneConverterTest {
 			
 		}
 	}
+
 }
