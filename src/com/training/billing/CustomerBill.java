@@ -7,23 +7,29 @@ package com.training.billing;
 public class CustomerBill {
 
 	CommonFormatService myMockCommonFormatService ;
-	private String myCustomerId; 
+	private String myCustomerId;
+	private String myFilePath; 
 	public CustomerBill(String CustomerId, String FilePath, CommonFormatService mockCommonFormatService) {
 		// TODO Auto-generated constructor stub
 		myMockCommonFormatService = mockCommonFormatService ; 
 		myCustomerId = CustomerId;
+		myFilePath = FilePath;
 	}
 	
 	public double CalculateBill()
 	{
 		String FileReadString;
-		if(myMockCommonFormatService.doesFileExist())
+		if(myMockCommonFormatService.doesFileExist(myFilePath) && myMockCommonFormatService.OpenFile(myFilePath))
 		{
-			FileReadString = myMockCommonFormatService.ReturnFile();
-			String wordString[] = FileReadString.split(",");
-			if(myCustomerId.equals(wordString[1]))
+			FileReadString = myMockCommonFormatService.next();
+			while(FileReadString !=null)
 			{
-				return Double.parseDouble(wordString[4]);
+				String wordString[] = FileReadString.split(",");
+				if(myCustomerId.equals(wordString[1]))
+				{
+					return Double.parseDouble(wordString[4]);
+				}
+				FileReadString = myMockCommonFormatService.next();
 			}
 		}
 		return 0;

@@ -2,16 +2,12 @@ package com.training.billing;
 
 import org.mockito.Mockito;
 
-public class CommonFormatService {
+public interface CommonFormatService {
 
-	public boolean doesFileExist() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+	public boolean doesFileExist(String myFilePath);
 
-	public String ReturnFile() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public String next();
+
+	public boolean OpenFile(String myFilePath);
 
 }
