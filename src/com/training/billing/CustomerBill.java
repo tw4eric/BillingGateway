@@ -6,15 +6,28 @@ package com.training.billing;
 
 public class CustomerBill {
 
-	CommonFormatService myMockCommonFormatService ; 
-	public CustomerBill(int CustomerId, String FilePath, CommonFormatService mockCommonFormatService) {
+	CommonFormatService myMockCommonFormatService ;
+	private String myCustomerId; 
+	public CustomerBill(String CustomerId, String FilePath, CommonFormatService mockCommonFormatService) {
 		// TODO Auto-generated constructor stub
 		myMockCommonFormatService = mockCommonFormatService ; 
+		myCustomerId = CustomerId;
 	}
 	
-	public Boolean doesFileExist()
+	public double CalculateBill()
 	{
-		return myMockCommonFormatService.doesFileExist();
+		String FileReadString;
+		if(myMockCommonFormatService.doesFileExist())
+		{
+			FileReadString = myMockCommonFormatService.ReturnFile();
+			String wordString[] = FileReadString.split(",");
+			System.out.println(wordString[1]);
+			if(myCustomerId.equals(wordString[1]))
+			{
+				return Double.parseDouble(wordString[4]);
+			}
+		}
+		return 0;
 	}
 	
 	
