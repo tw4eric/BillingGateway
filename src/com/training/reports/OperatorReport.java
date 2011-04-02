@@ -5,4 +5,13 @@ package com.training.reports;
 
 public class OperatorReport {
 
+	public double generateOperatorReport(String filePath, String string) {
+
+		if(filePath == null || filePath.equals(""))
+		{
+			throw new IllegalArgumentException("file does not exist");
+		}
+		return 0.0;
+	}
+
 }
