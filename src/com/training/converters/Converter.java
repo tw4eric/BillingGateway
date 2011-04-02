@@ -35,7 +35,7 @@ public class Converter {
                 
                 double callCost = 0;
                 // For airtel do the conversion
-                if (words[3].equals("airtel")) {
+                if (words[0].equals("airtel")) {
                     if (Boolean.parseBoolean(words[5]) == true) {
                         callCost = Double.parseDouble(words[4]) * Double.parseDouble(words[6]);
                     } else {
@@ -43,7 +43,7 @@ public class Converter {
                     }
 
                     // write to the file
-                    fileWriter.write("AIRTEL" + "," + words[0] + "," + words[1] + "," + words[2] + "," + callCost + "\n");
+                    fileWriter.write("AIRTEL" + "," + words[1] + "," + words[2] + "," + words[3] + "," + callCost + "\n");
                 }
             }
         } finally {
