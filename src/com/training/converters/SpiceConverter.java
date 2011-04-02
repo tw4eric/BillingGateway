@@ -8,11 +8,23 @@ public class SpiceConverter {
 
 	public boolean isSpiceRecord(String aRecord)
 	{
-		String[] words = aRecord.split("\\s+");
-		System.out.println(words[0]);
+		String[] words = aRecord.split("\\s+");	
 		if(words[0].equals("SPICE"))			
 			return true;
 		
 		return false;
+	}
+
+	public String convert(String record) {
+		
+		Double callCost;
+		String [] words = record.split("\\s+");
+		if (words[5].equals(words[6])) {
+            callCost = Double.parseDouble(words[4]) * (Double.parseDouble(words[7])/100);
+        } else {
+            callCost = Double.parseDouble(words[4]) * (Double.parseDouble(words[8])/100);
+        }
+				
+		return "SPICE" + "," + words[1] + "," + words[2] + "," + words[3] + "," + callCost;
 	}
 }

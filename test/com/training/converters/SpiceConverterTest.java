@@ -17,11 +17,23 @@ public class SpiceConverterTest {
        Assert.assertNotNull(aSpiceConverter);
 	 
 	}
+	
 	@Test
 	public void IfRecordContainsSpiceThenReturnTrue()
 	{
 		String aRecord = "SPICE 123,23/7/2011 11:30 2 DELHI DELHI 50 100";
 		SpiceConverter	aSpiceConverter = new SpiceConverter();
 		Assert.assertTrue(aSpiceConverter.isSpiceRecord(aRecord));
+	}
+	
+	@Test
+	public void convertRecordToCommonFormat()
+	{
+		String aRecord = "SPICE 123 23/7/2011 11:30 2 DELHI DELHI 50 100";
+		String aConvertedRecord = "SPICE,123,23/7/2011,11:30,1.0";
+		SpiceConverter	aSpiceConverter = new SpiceConverter();
+		
+		Assert.assertEquals(aConvertedRecord, aSpiceConverter.convert(aRecord));
+		
 	}
 }
